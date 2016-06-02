@@ -22,8 +22,8 @@
 
         #reviewStars-input {
             /*fix floating problems*/
-/*            overflow: hidden;*/
-/*            *zoom: 1;*/
+            overflow: hidden;
+            *zoom: 1;
             /*end of fix floating problems*/
             
 /*            border: 1px solid #000;*/
@@ -97,6 +97,57 @@
     
     </style>
     
+    <style>
+    
+        #progress-bar {
+            background-color: #fff;
+            height: 24px;
+/*            padding: 5px;*/
+            width: 350px;
+            margin: 50px 0 20px 100px;
+            -moz-border-radius: 12px;
+            -webkit-border-radius: 12px;
+            border-radius: 12px;
+            -moz-box-shadow: 0 1px 3px #505050 inset, 0 1px 0 #cecece;
+            -webkit-box-shadow: 0 1px 3px #505050 inset, 0 1px 0 #cecece;
+            box-shadow: 0 1px 3px #505050 inset, 0 1px 0 #cecece;
+            position: relative;
+        }
+        
+        #progress-bar span {
+            display: inline-block;
+            height: 100%;
+            border-radius: 12px;
+            background-color: #a5df41;
+            border-bottom: 1px solid rgb(108, 208, 25);
+/*            background-image: -webkit-gradient(linear, left top, left bottom, from(rgb(165, 223, 65)), to(rgb(76, 169, 22)));*/
+/*            background-image: -webkit-linear-gradient(top, #a5df41, #4ca916);*/
+    
+            background-image: -webkit-gradient(linear, 0% 0%, 0% 100%,color-stop(0, rgb(167, 244, 88)), color-stop(0.4, rgb(109, 210, 45)), color-stop(0.67, rgb(100, 192, 28)), color-stop(1, rgb(167, 244, 88)));   
+            background-image: -webkit-linear-gradient(top, rgb(167, 244, 88) 0%, rgb(109, 210, 45) 40%, rgb(100, 192, 28) 67%,rgb(134, 216, 24) 100%);
+            background-image: linear-gradient(to bottom,rgb(167, 244, 88) 0%, rgb(109, 210, 45) 40%, rgb(100, 192, 28) 67%,rgb(134, 216, 24) 100%);         
+            background-image: linear-gradient(to bottom,rgb(167, 244, 88) 0%,rgb(109, 210, 45) 40%,rgb(100, 192, 28) 67%,rgb(134, 216, 24) 100%);
+        }        
+        
+        #progress-bar__text {
+            position: absolute;
+            display: inline-block;
+            left: 50%;
+            width: 30px;
+            margin-left: -15px;
+            height: 24px;
+            line-height: 24px;
+            vertical-align: top;
+            text-align: center;
+        }
+        
+        .cf::after, .cf::before {
+            display: table;
+            content: '';
+            clear: both;
+        }
+    </style>
+    
     
 </head>
 <body>
@@ -119,6 +170,15 @@
 
       <input id="star-4" type="radio" name="reviewStars" />
       <label title="Ужасно" for="star-4"></label>
-    </div>    
+    </div>
+    
+    <h2 class="cf">Пример: прогресс-бар на CSS</h2>
+        
+    <div id="progress-bar">
+        
+        <span style='width:20%;'></span>
+        <div id='progress-bar__text'>20%</div>
+        
+    </div>
 </body>
 </html>
