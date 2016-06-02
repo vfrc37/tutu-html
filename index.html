@@ -3,103 +3,122 @@
 <head>
     <meta charset="UTF-8">
     <title>Рейтинг на CSS</title>
-    <style>
-    
-        /*sprite with stars*/
+    <style>        
+    /*  круглые (radiobox) или квадратные (checkbox) input играют роль области наведения на label, размеры input и label должны быть сопоставимы  */
+    /*  размер родителя #reviewStars и его потомков определяется размером картинки  */
+        * {
+            margin: 0;
+        }
+        
+        h2 {
+            line-height: 80px;
+            margin-left: 100px;
+        }
+        
+        /*  устанавливаем спрайт в background для всех input и label  */
         #reviewStars-input input:checked ~ label, #reviewStars-input label, #reviewStars-input label:hover, #reviewStars-input label:hover ~ label {
-          background: url('star.png') no-repeat;
+            background: url('star.png') no-repeat;
         }
 
         #reviewStars-input {
-
-          /*fix floating problems*/
-          overflow: hidden;
-          *zoom: 1;
-          /*end of fix floating problems*/
-
-          position: relative;
-          float: left;
+            /*fix floating problems*/
+/*            overflow: hidden;*/
+/*            *zoom: 1;*/
+            /*end of fix floating problems*/
+            
+/*            border: 1px solid #000;*/
+            position: relative;
+/*            padding: 3px;*/
+            float: left;
+            margin-top: 30px;
+            margin-left: 100px;
         }
 
-        #reviewStars-input input {
-          filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
-          opacity: 0;
+        #reviewStars-input input {        
+            /*  скрываем input  */
+            opacity: 0;
+            filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0); /*  opacity for IE  */
+            
+            width: 43px;
+/*            width: 50px;            */
+            height: 45px;
+            /*  берем размеры чуть больше, чем для #reviewStars-input label, чтобы захватить полностью картинки  */
 
-          width: 43px;
-          height: 40px;
-
-          position: absolute;
-          top: 0;
-          z-index: 0;
+            position: absolute;
+            top: 0;
+            z-index: 0;
         }
 
+        /*  меняем стили при выборе (сдвиг спрайта по y)  */
         #reviewStars-input input:checked ~ label {
-          background-position: 0 -40px;
-          height: 40px;
-          width: 43px;
+            background-position: 0 -40px; /*  желтый значок  */
+            height: 40px;
+            width: 43px;      
         }
 
         #reviewStars-input label {
-          background-position: 0 0;
-          height: 40px;
-          width: 43px;
-          float: right;
-          cursor: pointer;
-          margin-right: 10px;
-
-          position: relative;
-          z-index: 1;
+            background-position: 0 0; /*  серый значок  */
+            height: 40px; /*  40 - половина высоты картинки  */
+            width: 43px; /*  43 - ширина картинки  */
+            float: right;
+            cursor: pointer;            
+            margin-right: 10px; /*  минимальное расстояние между звездами  */
+            position: relative;
+            z-index: 1;
+            
+            /*  корректировка, чтобы между значками не было дырок  */
+/*            width: 48px;*/
+/*            margin-right: 0;*/
         }
-
+        
+        /*  меняем стили при наведении (сдвиг спрайта по y)  */
         #reviewStars-input label:hover, #reviewStars-input label:hover ~ label {
-          background-position: 0 -40px;
-          height: 40px;
-          width: 43px;
+            background-position: 0 -40px; /*  желтый значок  */
+            height: 40px;
+            width: 43px;
         }
 
-        #reviewStars-input #star-0 {
-          left: 0px;
-        }
-        #reviewStars-input #star-1 {
-          left: 53px;
-        }
-        #reviewStars-input #star-2 {
-          left: 106px;
+        /*  располагаем элементы в обратном порядке, чтобы сработал селектор ~  */
+        #reviewStars-input #star-4 {
+            left: 0px;
         }
         #reviewStars-input #star-3 {
-          left: 159px;
+            left: 54px;
         }
-        #reviewStars-input #star-4 {
-          left: 212px;
+        #reviewStars-input #star-2 {
+            left: 106px;
         }
-/*
-        #reviewStars-input #star-5 {
-          left: 265px;
-        }    
-*/
+        #reviewStars-input #star-1 {
+            left: 159px;
+        }
+        #reviewStars-input #star-0 {
+            left: 212px;
+        }
     
     </style>
+    
+    
 </head>
 <body>
-    <h1>Пример рейтинг на CSS (IE 8+)</h1>
-
+    <!--   http://codepen.io/positivecrash/pen/qGhCp   -->
+    <h2>Пример: рейтинг на CSS (IE 8+)</h2>
     <!--[if lte IE 7]><style>#reviewStars-input{display:none}</style><![endif]-->
 
     <div id="reviewStars-input">
-      <input id="star-4" type="radio" name="reviewStars" />
-      <label title="gorgeous" for="star-4"></label>
-
-      <input id="star-3" type="radio" name="reviewStars" />
-      <label title="good" for="star-3"></label>
-
-      <input id="star-2" type="radio" name="reviewStars" />
-      <label title="regular" for="star-2"></label>
+      <input id="star-0" type="radio" name="reviewStars" />
+      <label title="Отлично" for="star-0"></label>
 
       <input id="star-1" type="radio" name="reviewStars" />
-      <label title="poor" for="star-1"></label>
+      <label title="Хорошо" for="star-1"></label>
 
-      <input id="star-0" type="radio" name="reviewStars" />
-      <label title="bad" for="star-0"></label>
+      <input id="star-2" type="radio" name="reviewStars" />
+      <label title="Нормально" for="star-2"></label>
+
+      <input id="star-3" type="radio" name="reviewStars" />
+      <label title="Плохо" for="star-3"></label>
+
+      <input id="star-4" type="radio" name="reviewStars" />
+      <label title="Ужасно" for="star-4"></label>
     </div>    
 </body>
 </html>
